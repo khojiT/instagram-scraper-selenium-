@@ -8,6 +8,11 @@ import time
 import os
 import wget
 
+USER = input('USER')
+PASS = input('PASS')
+search = input('what is your search?')
+x = int(input('How many posts want to check?'))
+
 driver = webdriver.Chrome(executable_path='C:\\Users\\persian\\Desktop\\chromedriver.exe')
 driver.maximize_window()
 url = 'https://www.instagram.com/'
@@ -16,14 +21,14 @@ username = WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.CSS_SEL
 password = WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.CSS_SELECTOR,"input[name = 'password']")))
 username.clear()
 password.clear()
-username.send_keys("USER")
-password.send_keys("PASS")
+username.send_keys(USER)
+password.send_keys(PASS)
 login = WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.CSS_SELECTOR,"button[type = 'submit']"))).click()
 not_now = WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.XPATH,"//button[contains(text(),'Not Now')]"))).click()
 not_now2 = WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.XPATH,"//button[contains(text(),'Not Now')]"))).click()
 search_box = WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.XPATH,"//input[@placeholder = 'Search']")))
 search_box.clear()
-keyword = '#london'
+keyword = 'search'
 search_box.send_keys(keyword)
 time.sleep(10)
 search_box.send_keys(Keys.ENTER)
@@ -32,10 +37,11 @@ search_box.send_keys(Keys.ENTER)
 time.sleep(5)
 element = WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.XPATH,"//div[@class = '_9AhH0']"))).click()
 time.sleep(5)
+
 l_caption = []
 c = 0
 i =0
-while c < 6:
+while c < x:
     time.sleep(2)
     image = driver.find_elements_by_class_name('FFVAD')[c]
     src = image.get_attribute('src')
