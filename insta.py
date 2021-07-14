@@ -30,13 +30,13 @@ search_box = WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.XPATH
 search_box.clear()
 keyword = 'search'
 search_box.send_keys(keyword)
-time.sleep(10)
+time.sleep(1)
 search_box.send_keys(Keys.ENTER)
-time.sleep(5)
+time.sleep(1)
 search_box.send_keys(Keys.ENTER)
-time.sleep(5)
+time.sleep(1)
 element = WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.XPATH,"//div[@class = '_9AhH0']"))).click()
-time.sleep(5)
+time.sleep(1)
 
 l_caption = []
 c = 0
@@ -50,7 +50,7 @@ while c < x:
     caption =  WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.XPATH,"/html/body/div[4]/div[2]/div/article/div[3]/div[1]/ul/div/li/div/div/div[2]/span")))
     l_caption = l_caption + [caption.text]
     c += 1
-    time.sleep(5)
+    time.sleep(4)
     next = WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.XPATH,"//a[contains(text(),'Next')]"))).click()
 for item in l_caption:
     print(item)
