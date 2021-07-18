@@ -54,5 +54,4 @@ while c < x:
     next = WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.XPATH,"//a[contains(text(),'Next')]"))).click()
 for item in l_caption:
     print(item)
-    print('\n\n\n\n')
 driver.quit()
